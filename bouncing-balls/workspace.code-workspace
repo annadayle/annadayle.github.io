@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../Desktop/cs30-p5js-template-master"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5500,
+		"liveServer.settings.multiRootWorkspaceName": "bouncing-balls"
+	}
+}
