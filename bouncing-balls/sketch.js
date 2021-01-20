@@ -45,7 +45,7 @@ function moveBall() {
 }
 
 function displayBall() {
-  for (let i=0, i<theBouncingBalls.length; i++) {
+  for (let i=0; i<theBouncingBalls.length; i++) {
     noStroke();
     fill(theBouncingBalls[i].theColor);
     ellipse(theBouncingBalls[i].x, theBouncingBalls[i].y, theBouncingBalls[i].diameter, theBouncingBalls[i].diameter);
