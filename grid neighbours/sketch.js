@@ -1,6 +1,6 @@
 // grid neighbours
 
-let grid = createEmptyGrid(10, 10);
+let grid = createEmptyGrid(4, 4);
 
 let rows, cols, cellWidth, cellHeight;
 
