@@ -5,6 +5,7 @@
 
 let grid = createEmptyGrid(3, 3);
 let rows, cols, cellWidth, cellHeight;
+let s = 0;
 let t = "Your score: "
 
 function setup() {
@@ -59,7 +60,7 @@ function displayGrid() {
 
 function displayText() {
   fill(50);
-  text (t, windowWidth*0.5, windowHeight*0.5,);
+  text (t + s, windowWidth -= windowWidth*0.1, windowHeight*0.1);
 }
 
 function createEmptyGrid(cols, rows) {
