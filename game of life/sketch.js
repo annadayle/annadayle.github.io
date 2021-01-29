@@ -39,7 +39,7 @@ function mousePressed() {
    let x = Math.floor(mouseX / cellWidth);
    let y = Math.floor(mouseY / cellHeight);
 
-   toggleCell(x, y); 
+   toggleCell(x, y);
 }
 
 function toggleCell(x, y) {
@@ -52,6 +52,7 @@ function toggleCell(x, y) {
     grid[y][x] = 1;
   }
   }
+console.log()
 }
 
 function displayGrid() {
