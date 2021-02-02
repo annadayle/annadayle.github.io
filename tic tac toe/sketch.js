@@ -37,13 +37,14 @@ function mousePressed() {
 
 function playerTurn(x, y) {
   if (grid[y][x] === 0) {
-    grid[y][x] = 1;  
-    s = s + 1;
-    if (s > 3) {
-      grid = createEmptyGrid(rows, cols);
-      s = 0;
+    grid[y][x] = 1;
+  }  
+  if (grid[0][0] === 1 && grid[0][1] === 1 && grid[0][2] === 1) {
+      s = s + 1;
     }
-  }
+  if (s >= 1) {
+      grid = createEmptyGrid(rows, cols);
+    }
 }
 
 function displayGrid() {
