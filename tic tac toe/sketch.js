@@ -1,7 +1,7 @@
 //tic tac toe
 
 // You will be playing against the computer in this tic tac toe game. The computer will try to guess your moves and counter them, whether
-// that be making the game a tie or winning by making it's own row. Complete as many rounds as you want
+// that be making the game a tie or winning by making it's own row/column. Complete as many rounds as you want
 
 let grid = [[0,0,0],
             [0,0,0],      
@@ -35,16 +35,66 @@ function mousePressed() {
    playerTurn(x, y); 
 }
 
-function playerTurn(x, y) {
+function playerTurn(x, y) { //this is where things get ugly
   if (grid[y][x] === 0) {
     grid[y][x] = 1;
-  }  
-  if (grid[0][0] === 1 && grid[0][1] === 1 && grid[0][2] === 1) {
+    aiTurn(x, y);
+    if (grid[0][0] === 1 && grid[0][1] === 1 && grid[0][2] === 1) { //if row 1 is red straight across
       s = s + 1;
+      grid = createEmptyGrid(rows, cols); 
     }
-  if (s >= 1) {
+    else if (grid[1][0] === 1 && grid[1][1] === 1 && grid[1][2] === 1) { //if row 2 is red straight across
+      s = s + 1;
+      grid = createEmptyGrid(rows, cols); 
+    }
+    else if (grid[2][0] === 1 && grid[2][1] === 1 && grid[2][2] === 1) { //if row 3 is red straight across
+      s = s + 1;
+      grid = createEmptyGrid(rows, cols); 
+    }
+    else if (grid[0][0] === 1 && grid[1][0] === 1 && grid[2][0] === 1) { //if col 1 is red straight down
+      s = s + 1;
+      grid = createEmptyGrid(rows, cols); 
+    }
+    else if (grid[0][1] === 1 && grid[1][1] === 1 && grid[2][1] === 1) { //if col 2 is red straight down
+      s = s + 1;
+      grid = createEmptyGrid(rows, cols); 
+    }
+    else if (grid[0][2] === 1 && grid[1][2] === 1 && grid[2][2] === 1) { //if col 3 is red straight down
+      s = s + 1;
+      grid = createEmptyGrid(rows, cols); 
+    }
+    else if (grid[0][0] === 1 && grid[1][1] === 1 && grid[2][2] === 1) { //if a red row is diagonal thats leaning down right or leaning up left (basically if it looks like this: \)
+      s = s + 1;
       grid = createEmptyGrid(rows, cols);
     }
+    else if (grid[0][2] === 1 && grid[1][1] === 1 && grid[2][0] === 1) { //if a red row is diagonal thats leaning down left or leaning up right (basically if it looks like this: /)
+      s = s + 1;
+      grid = createEmptyGrid(rows, cols);
+    }
+  }  
+}
+
+function aiTurn(x, y) {
+  if (grid[0][0] === 1) { // if the top left square is red
+    if (grid[1][0] === 0) { // is the square below the top left square free?
+      grid[1][0] = 2;
+    }
+  }
+  if (grid[0][0] === 1 && grid[0][2] === 1) { //if the top row is almost a row but the middle square is still white
+    if (grid[0][1] === 0) { //is the top middle square free?
+      grid[0][1] = 2;
+    }
+  }
+  if (grid[0][0] === 1 && grid[0][1] === 1) { //if the top row is almost a row but the last square is still white
+    if (grid[0][2] === 0) { //is the top last square free?
+      grid[0][2] = 2;
+    }
+  }
+  if (grid[0][0] === 1 && grid[1][1] === 1) { //is the player trying to get a diagonal line?
+    if (grid[2][2] === 0) { //is the bottom left square free?
+      grid[2][2] = 2;
+    }
+  }
 }
 
 function displayGrid() {
@@ -56,9 +106,9 @@ function displayGrid() {
         if (grid[y][x] === 1) {
           fill("red");
         }
-        // if (grid[y][x] === 2) {
-        //   fill("black");
-        // }
+        if (grid[y][x] === 2) {
+          fill("blue");
+        }
         rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
     }
