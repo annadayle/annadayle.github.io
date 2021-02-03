@@ -76,24 +76,83 @@ function playerTurn(x, y) { //this is where things get ugly
 
 function aiTurn(x, y) {
   if (grid[0][0] === 1) { // if the top left square is red
-    if (grid[1][0] === 0) { // is the square below the top left square free?
-      grid[1][0] = 2;
+    if (grid[0][0] === 1 && grid[0][1] === 1) { //is the top left square red and the top middle square red?
+      if (grid[0][2] === 0) { //is the top right square free?
+        grid[0][2] = 2;
+      }
+    }
+    else if (grid[0][0] === 1 && grid[0][2] === 1) { //is the top left square red and is the top right square red?
+      if (grid[0][1] === 0) { //is the top middle square free?
+        grid[0][1] = 2;
+      }
+    }
+    else if (grid[0][0] === 1 && grid[1][1] === 1) { //is the player trying to get a diagonal line?
+      if (grid[2][2] === 0) { //is the bottom left square free?
+        grid[2][2] = 2;
     }
   }
-  if (grid[0][0] === 1 && grid[0][2] === 1) { //if the top row is almost a row but the middle square is still white
-    if (grid[0][1] === 0) { //is the top middle square free?
-      grid[0][1] = 2;
+    else if (grid[0][0] === 1 && grid[2][2] === 1) { //is the player trying to get a diagonal line but the middle is still white?
+      if (grid[1][1] === 0) { //is the middle square free?
+        grid[1][1] = 2;
     }
   }
-  if (grid[0][0] === 1 && grid[0][1] === 1) { //if the top row is almost a row but the last square is still white
-    if (grid[0][2] === 0) { //is the top last square free?
-      grid[0][2] = 2;
+    else if (grid[0][0] === 1 && grid[1][0] === 1) { //is the top left square red and the square below it red?
+      if (grid[2][0] === 0) { //is the bottom left square free?
+        grid[2][0] = 2;
+  }
+  }
+  }
+  
+  if (grid[0][1] === 1) { //is the top middle square red?
+   if (grid[0][1] === 1 && grid[1][1] === 1) { //are both the top middle and the middle red?
+      if (grid[2][1] === 0) { //is the bottom middle square free?
+        grid[2][1] = 2;
+      }
+    }
+    else if (grid[0][1] === 1 && grid[2][1] === 1) { //are both the top middle and the bottom middle red?
+      if (grid[1][1] === 0) { //is the middle square free?
+        grid[1][1] = 2;
+      }
+    }
+    else if (grid[0][1] === 1 && grid[0][2] === 1) { //are both the top middle and top right square red?
+      if (grid[0][0] === 0) { //is the top right square free?
+        grid[0][0] = 2;
     }
   }
-  if (grid[0][0] === 1 && grid[1][1] === 1) { //is the player trying to get a diagonal line?
-    if (grid[2][2] === 0) { //is the bottom left square free?
-      grid[2][2] = 2;
+}
+if (grid[0][2] === 1) { //is the top right square red?
+  if (grid[0][2] === 1 && grid[1][2] === 1) { //are both the top right and the middle right red?
+     if (grid[2][2] === 0) { //is the bottom right square free?
+       grid[2][2] = 2;
+     }
+   }
+   else if (grid[0][2] === 1 && grid[1][1] === 1) { //are both the top right and the middle red?
+     if (grid[2][0] === 0) { //is the bottom left square free?
+       grid[2][0] = 2;
+     }
+   }
+   else if (grid[0][2] === 1 && grid[2][2] === 1) { //are both the top right and bottom right square red?
+     if (grid[1][2] === 0) { //is the top right square free?
+       grid[1][2] = 2;
+   }
+ }
+ else if (grid[0][2] === 1 && grid[2][0] === 1) { //are both the top right and bottom lefy square red?
+  if (grid[1][1] === 0) { //is the middle square free?
+    grid[1][1] = 2;
     }
+  }
+}
+if (grid[1][0] === 1) { //is the middle left square red?
+  if (grid[1][0] === 1 && grid[1][1] === 1) { //are both the middle left and the square beside it red?
+     if (grid[1][2] === 0) { //is the middle right square free?
+       grid[1][2] = 2;
+     }
+   }
+   else if (grid[1][0] === 1 && grid[2][0] === 1) { //are both the middle left and the square below it red?
+     if (grid[0][0] === 0) { //is the top left square free?
+       grid[0][0] = 2;
+     }
+   }
   }
 }
 
