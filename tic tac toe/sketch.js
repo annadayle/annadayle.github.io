@@ -99,73 +99,162 @@ function aiTurn(x, y) {
     else if (grid[0][0] === 1 && grid[1][0] === 1) { //is the top left square red and the square below it red?
       if (grid[2][0] === 0) { //is the bottom left square free?
         grid[2][0] = 2;
-  }
-  }
-  }
-  
-  if (grid[0][1] === 1) { //is the top middle square red?
-   if (grid[0][1] === 1 && grid[1][1] === 1) { //are both the top middle and the middle red?
-      if (grid[2][1] === 0) { //is the bottom middle square free?
-        grid[2][1] = 2;
       }
     }
-    else if (grid[0][1] === 1 && grid[2][1] === 1) { //are both the top middle and the bottom middle red?
+    else if (grid[0][0] === 1 && grid[1][2] === 1) { //is the top left square red and the middle right it red?
       if (grid[1][1] === 0) { //is the middle square free?
         grid[1][1] = 2;
       }
     }
-    else if (grid[0][1] === 1 && grid[0][2] === 1) { //are both the top middle and top right square red?
-      if (grid[0][0] === 0) { //is the top right square free?
-        grid[0][0] = 2;
+    else if (grid[0][0] === 1 && grid[2][0] === 1) { //is the top left square red and the bottom left square red?
+      if (grid[1][0] === 0) { //is the middle left square free?
+        grid[1][0] = 2;
+      }
     }
-  }
-}
-if (grid[0][2] === 1) { //is the top right square red?
-  if (grid[0][2] === 1 && grid[1][2] === 1) { //are both the top right and the middle right red?
-     if (grid[2][2] === 0) { //is the bottom right square free?
-       grid[2][2] = 2;
-     }
-   }
-   else if (grid[0][2] === 1 && grid[1][1] === 1) { //are both the top right and the middle red?
-     if (grid[2][0] === 0) { //is the bottom left square free?
-       grid[2][0] = 2;
-     }
-   }
-   else if (grid[0][2] === 1 && grid[2][2] === 1) { //are both the top right and bottom right square red?
-     if (grid[1][2] === 0) { //is the top right square free?
-       grid[1][2] = 2;
-   }
- }
-    else if (grid[0][2] === 1 && grid[2][0] === 1) { //are both the top right and bottom lefy square red?
+    else if (grid[0][0] === 1 && grid[2][1] === 1) { //is the top left square red and the bottom middle square red?
       if (grid[1][1] === 0) { //is the middle square free?
-    grid[1][1] = 2;
+        grid[1][1] = 2;
+      }
     }
   }
+  ///
+    if (grid[0][1] === 1) { //is the top middle square red?
+    if (grid[0][1] === 1 && grid[1][1] === 1) { //are both the top middle and the middle red?
+        if (grid[2][1] === 0) { //is the bottom middle square free?
+          grid[2][1] = 2;
+        }
+      }
+      else if (grid[0][1] === 1 && grid[2][1] === 1) { //are both the top middle and the bottom middle red?
+        if (grid[1][1] === 0) { //is the middle square free?
+          grid[1][1] = 2;
+        }
+      }
+      else if (grid[0][1] === 1 && grid[0][2] === 1) { //are both the top middle and top right square red?
+        if (grid[0][0] === 0) { //is the top right square free?
+          grid[0][0] = 2;
+      }
+    }
 }
-if (grid[1][0] === 1) { //is the middle left square red?
-  if (grid[1][0] === 1 && grid[1][1] === 1) { //are both the middle left and the square beside it red?
-     if (grid[1][2] === 0) { //is the middle right square free?
-       grid[1][2] = 2;
-     }
-   }
-   else if (grid[1][0] === 1 && grid[2][0] === 1) { //are both the middle left and the square below it red?
-     if (grid[0][0] === 0) { //is the top left square free?
-       grid[0][0] = 2;
-     }
-   }
-   else if (grid[1][0] === 1 && grid[0][0] === 1) { 
-     if (grid[2][0] === 0) {
-       grid[2][0] = 2;
-     }
-   }
+///  
+  if (grid[0][2] === 1) { //is the top right square red?
+    if (grid[0][2] === 1 && grid[1][2] === 1) { //are both the top right and the middle right red?
+      if (grid[2][2] === 0) { //is the bottom right square free?
+        grid[2][2] = 2;
+      }
+    }
+    else if (grid[0][2] === 1 && grid[1][1] === 1) { //are both the top right and the middle red?
+      if (grid[2][0] === 0) { //is the bottom left square free?
+        grid[2][0] = 2;
+      }
+    }
+    else if (grid[0][2] === 1 && grid[2][2] === 1) { //are both the top right and bottom right square red?
+      if (grid[1][2] === 0) { //is the top right square free?
+        grid[1][2] = 2;
+    }
   }
-if (grid[1][1] === 1) { //is the middle square in the second row red?
-  if (grid[1][1] === 1 && grid[0][0] === 1) {
-    if (grid[2][2] === 0) {
+      else if (grid[0][2] === 1 && grid[2][0] === 1) { //are both the top right and bottom lefy square red?
+        if (grid[1][1] === 0) { //is the middle square free?
+      grid[1][1] = 2;
+      }
+    }
+  }
+///
+  if (grid[1][0] === 1) { //is the middle left square red?
+    if (grid[1][0] === 1 && grid[1][1] === 1) { //are both the middle left and the square beside it red?
+      if (grid[1][2] === 0) { //is the middle right square free?
+        grid[1][2] = 2;
+      }
+    }
+    else if (grid[1][0] === 1 && grid[2][0] === 1) { //are both the middle left and the square below it red?
+      if (grid[0][0] === 0) { //is the top left square free?
+        grid[0][0] = 2;
+      }
+    }
+    else if (grid[1][0] === 1 && grid[0][0] === 1) { //middle left square is red and top left square is red
+      if (grid[2][0] === 0) { //is bottom left square free?
+        grid[2][0] = 2;
+      }
+    }
+    }
+///
+  if (grid[1][1] === 1) { //is the middle square in the second row red?
+    if (grid[1][1] === 1 && grid[0][0] === 1) { //center square is red and top left square is red
+      if (grid[2][2] === 0) { //is the bottom right square free?
+        grid[2][2] = 2;
+      }
+    }
+    else if (grid[1][1] === 1 && grid[0][1] === 1) { //center square is red and top middle square is red
+      if (grid[2][1] === 0) { //is the bottom middle square free?
+        grid[2][1] = 2;
+      }
+    }
+    else if (grid[1][1] === 1 && grid[0][2] === 1) { //center square is red and top right square is red
+      if (grid[2][0] === 0) { //is the bottom left square free?
+        grid[2][0] = 2;
+      }
+    }
+    else if (grid[1][1] === 1 && grid[1][0] === 1) { //center square is red and middle left square is red
+      if (grid[1][2] === 0) { //is the middle right square free?
+        grid[1][2] = 2;
+      }
+    }
+    else if (grid[1][1] === 1 && grid[1][2] === 1) { //center square is red and middle right square is red
+      if (grid[1][0] === 0) { //is the middle left square free?
+        grid[1][0] = 2;
+      }
+    }
+    else if (grid[1][1] === 1 && grid[2][0] === 1) { //center square is red and bottom left square is red
+      if (grid[0][2] === 0) { //is the bottom left square free
+        grid[0][2] = 2;
+      }
+    }
+    else if (grid[1][1] === 1 && grid[2][1] === 1) { //center square is red and bottom middle square is red
+      if (grid[0][1] === 0) { //is the top middle square free
+        grid[0][1] = 2;
+      }
+    }
+    else if (grid[1][1] === 1 && grid[2][2] === 1) { //center square is red and bottom right square is red
+      if (grid[0][0] === 0) { //is the top left square free
+        grid[0][0] = 2;
+      }
+    }
+  }
+///
+if (grid[1][2] === 1) { //is the middle right square red?
+  if (grid[1][2] === 1 && grid[0][2] === 1) { // mid right is red and top right is red
+    if (grid[2][2] === 0) { //is bottom right free?
       grid[2][2] = 2;
+      }
+    }
+  else if (grid[1][2] === 1 && grid[1][0] === 1) { //mid right is red and mid left is red
+    if (grid[1][1] === 0) { //is center square free?
+      grid[1][1] = 2;
     }
   }
-}
+  else if (grid[1][2] === 1 && grid[1][1] === 1) { //mid right is and center is red
+    if (grid[1][0] === 0) { //is mid left square free?
+      grid[1][0] = 2;
+      }
+    }
+  else if (grid[1][2] === 1 && grid[2][2] === 1) { //mid right is red and bottom right is red
+    if (grid[0][2] === 0) { //is top right square free?
+      grid[0][2] = 2;
+      }
+    }
+  }
+///
+if (grid[2][0] === 1) { //is the bottom left square red?
+  if (grid[2][0] === 1 && grid[2][1] === 1) { //bottom left red and bottom middle red
+    if (grid[2][2] === 0) { //is bottom right square free?
+      grid[2][2] = 2;
+      }
+    }
+  else if (grid[2][0] === 1 && grid[2][2] === 1) { //bottom left red and bottom right red
+    if (grid[2][1] === 0) { //is bottom middle square free?
+      grid[2][1] = 2;
+      }
+    }
+  }
 }
 
 function displayGrid() {
