@@ -136,8 +136,8 @@ if (grid[0][2] === 1) { //is the top right square red?
        grid[1][2] = 2;
    }
  }
- else if (grid[0][2] === 1 && grid[2][0] === 1) { //are both the top right and bottom lefy square red?
-  if (grid[1][1] === 0) { //is the middle square free?
+    else if (grid[0][2] === 1 && grid[2][0] === 1) { //are both the top right and bottom lefy square red?
+      if (grid[1][1] === 0) { //is the middle square free?
     grid[1][1] = 2;
     }
   }
@@ -153,7 +153,19 @@ if (grid[1][0] === 1) { //is the middle left square red?
        grid[0][0] = 2;
      }
    }
+   else if (grid[1][0] === 1 && grid[0][0] === 1) { 
+     if (grid[2][0] === 0) {
+       grid[2][0] = 2;
+     }
+   }
   }
+if (grid[1][1] === 1) { //is the middle square in the second row red?
+  if (grid[1][1] === 1 && grid[0][0] === 1) {
+    if (grid[2][2] === 0) {
+      grid[2][2] = 2;
+    }
+  }
+}
 }
 
 function displayGrid() {
