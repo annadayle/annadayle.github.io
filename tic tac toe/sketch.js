@@ -11,7 +11,9 @@ let cols = grid[0].length;
 let cellWidth;
 let cellHeight;
 let s = 0;
+let cpuS = 0;
 let t = "Your score: ";
+let cpuT = "CPU's score: ";
 
 function setup() {
   let myCanvas = createCanvas(windowWidth*0.8, windowHeight*0.8);
@@ -26,6 +28,7 @@ function draw() {
   background(200);
   displayGrid();
   displayText();
+  displayCPUText();
 }
 
 function mousePressed() {
@@ -69,6 +72,10 @@ function playerTurn(x, y) { //this is where things get ugly
     }
     else if (grid[0][2] === 1 && grid[1][1] === 1 && grid[2][0] === 1) { //if a red row is diagonal thats leaning down left or leaning up right (basically if it looks like this: /)
       s = s + 1;
+      grid = createEmptyGrid(rows, cols);
+    }
+    // the line of code below checks to see if the board is completely filled, but there are no completed red rows or blue rows.
+    else if(grid[0][0] != 0 && grid[0][1] != 0 && grid[0][2] != 0 && grid[1][0] != 0 && grid[1][1] != 0 && grid[1][2] != 0 && grid[2][0] != 0 && grid[2][1] != 0 && grid[2][2] != 0) {
       grid = createEmptyGrid(rows, cols);
     }
   }  
@@ -254,8 +261,58 @@ if (grid[2][0] === 1) { //is the bottom left square red?
       grid[2][1] = 2;
       }
     }
+  else if (grid[2][0] === 1 && grid[0][2] === 1) { //bottom left red and top right red
+    if (grid[1][1] === 0) { //is middle square free?
+      grid[1][1] = 2;
+      }
+     }
+  else if (grid[2][0] === 1 && grid[0][0] === 1) { //bottom left red and top left red
+    if (grid[1][0] === 0) { //is middle left square free?
+      grid[1][0] = 2;
+      }
+    }
   }
-}
+///
+if (grid[2][1] === 1) { //is the bottom middle square red?
+  if (grid[2][1] === 1 && grid[2][2] === 1) { //bottom middle red and bottom right red
+    if (grid[2][0] === 0) { //is bottom left square free?
+      grid[2][0] = 2;
+      }
+    }
+  }
+  if (grid[0][0] === 2 && grid[0][1] === 2 && grid[0][2] === 2) { //if row 1 is blue straight across
+    cpuS = cpuS + 1;
+    grid = createEmptyGrid(rows, cols); 
+  }
+  else if (grid[1][0] === 2 && grid[1][1] === 2 && grid[1][2] === 2) { //if row 2 is blue straight across
+    cpuS = cpuS + 1;
+    grid = createEmptyGrid(rows, cols); 
+  }
+  else if (grid[2][0] === 2 && grid[2][1] === 2 && grid[2][2] === 2) { //if row 3 is blue straight across
+    cpuS = cpuS + 1;
+    grid = createEmptyGrid(rows, cols); 
+  }
+  else if (grid[0][0] === 2 && grid[1][0] === 2 && grid[2][0] === 2) { //if col 1 is blue straight down
+    cpuS = cpuS + 1;
+    grid = createEmptyGrid(rows, cols); 
+  }
+  else if (grid[0][1] === 2 && grid[1][1] === 2 && grid[2][1] === 2) { //if col 2 is blue straight down
+    cpuS = cpuS + 1;
+    grid = createEmptyGrid(rows, cols); 
+  }
+  else if (grid[0][2] === 2 && grid[1][2] === 2 && grid[2][2] === 2) { //if col 3 is blue straight down
+    cpuS = cpuS + 1;
+    grid = createEmptyGrid(rows, cols); 
+  }
+  else if (grid[0][0] === 2 && grid[1][1] === 2 && grid[2][2] === 2) { //if a blue row is diagonal thats leaning down right or leaning up left (basically if it looks like this: \)
+    cpuS = cpuS + 1;
+    grid = createEmptyGrid(rows, cols);
+  }
+  else if (grid[0][2] === 2 && grid[1][1] === 2 && grid[2][0] === 2) { //if a blue row is diagonal thats leaning down left or leaning up right (basically if it looks like this: /)
+    cpuS = cpuS + 1;
+    grid = createEmptyGrid(rows, cols);
+  }
+}  
 
 function displayGrid() {
     for (let y=0; y<rows; y++) {
@@ -267,7 +324,7 @@ function displayGrid() {
           fill("red");
         }
         if (grid[y][x] === 2) {
-          fill("blue");
+          fill("LightSkyBlue");
         }
         rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
       }
@@ -278,7 +335,13 @@ function displayGrid() {
 function displayText() {
   fill(50);
   textAlign(LEFT, BOTTOM);
-  text (t + s, 50, 25);
+  text (t + s, windowWidth/27, windowHeight/27);
+}
+
+function displayCPUText() {
+  fill(50);
+  textAlign(RIGHT, BOTTOM);
+  text(cpuT + cpuS, windowWidth/2, windowHeight/27);
 }
 
 function createEmptyGrid(cols, rows) {
