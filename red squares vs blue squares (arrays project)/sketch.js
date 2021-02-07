@@ -3,6 +3,7 @@
 // In this game, you must click on the white squares and try to make a row of red squares straight across, diagonally, or straight down.
 // There will be blue squares countering your moves. The blue squares are allowed to move more than once in a turn, or none at all, so pick you moves carefully.
 // Once you get a row, you will get one point and a new round will begin. Similarly, if the CPU (the blue squares) get a point, the CPU will get a point and a new round will begin.
+// If there is a tie, a new round will start and no points will be given for that round.
 
 //Theres a lot of comments in this code but I felt like they were necessary for a code as long as this.
 
