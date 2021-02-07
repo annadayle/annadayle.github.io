@@ -1,7 +1,10 @@
-//tic tac toe
+//Red squares vs blue squares
 
-// You will be playing against the computer in this tic tac toe game. The computer will try to guess your moves and counter them, whether
-// that be making the game a tie or winning by making it's own row/column. Complete as many rounds as you want
+// In this game, you must click on the white squares and try to make a row of red squares straight across, diagonally, or straight down.
+// There will be blue squares countering your moves. The blue squares are allowed to move more than once in a turn, or none at all, so pick you moves carefully.
+// Once you get a row, you will get one point and a new round will begin. Similarly, if the CPU (the blue squares) get a point, the CPU will get a point and a new round will begin.
+
+//Theres a lot of comments in this code but I felt like they were necessary for a code as long as this.
 
 let grid = [[0,0,0],
             [0,0,0],      
@@ -14,9 +17,6 @@ let s = 0;
 let cpuS = 0;
 let t = "Your score: ";
 let cpuT = "CPU's score: ";
-let startTxt = "RED SQUARES VS BLUE SQUARES";
-let description = "In this game, you are red squares and the your opponent (the computer) is blue squares. "
-let start = false;
 
 function setup() {
   let myCanvas = createCanvas(windowWidth*0.8, windowHeight*0.8);
@@ -32,7 +32,8 @@ function draw() {
   displayGrid();
   displayText();
   displayCPUText();
-}
+ } 
+
 
 function mousePressed() {
    let x = Math.floor(mouseX / cellWidth);
@@ -317,7 +318,7 @@ if (grid[2][1] === 1) { //is the bottom middle square red?
   }
 }  
 
-function displayGrid() {
+function displayGrid() { 
     for (let y=0; y<rows; y++) {
       for (let x=0; x<cols; x++) {
         if (grid[y][x] === 0) {
@@ -334,15 +335,7 @@ function displayGrid() {
     }
 }
 
-function startScreen() {
-  if (start = false) {
-    fill(50);
-    textAlign(LEFT, BOTTOM);
-    text ()
-  }
-}
-
-function displayText() {
+function displayText() { 
   fill(50);
   textAlign(LEFT, BOTTOM);
   text (t + s, windowWidth/27, windowHeight/27);
