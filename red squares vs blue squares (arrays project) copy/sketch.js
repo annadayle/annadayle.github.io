@@ -1,3 +1,7 @@
+// Anna Haight
+// Arrays Assignment
+// Computer Science 30, quint 3 class 2
+
 //Red squares vs blue squares
 
 // In this game, you must click on the white squares and try to make a row of red squares straight across, diagonally, or straight down.
